@@ -4,6 +4,8 @@ QUIZ Master 3000
 Steffan Johannesen
 --]]
 
+-- TODO add support for JSON data
+
 local score = 0
 local questions = {
     {
@@ -40,7 +42,7 @@ function askForAnswer()
         print("Not a number, try again or type exit to exit.")
         io.write("Answer: ")
         answer = io.read()
-        
+
         if answer == "exit" then return end
     end
 
@@ -61,7 +63,7 @@ end
 function evaluateQuiz()
     local percentCorrect = (100 / #questions) * score
     print(string.format("You got %d percent correct.", percentCorrect))
-    
+
     if percentCorrect == 100 then
         print("CONGRATULATIONS! YOU ARE THE QUIZMASTER 3000!")
     elseif percentCorrect > 65 then
