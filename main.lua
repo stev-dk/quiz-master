@@ -14,7 +14,7 @@ print("Type exit at anytime, to stop the quiz.\n")
 -- Loop 10 times
 for i=1, total_questions do
     -- Grab random question from quiz
-    local current_question_data, current_question_index = quiz_brain.get_random_question()
+    local current_question_data = quiz_brain.get_random_question()
 
     -- Present question to user
     print(current_question_data.question)
@@ -30,7 +30,7 @@ for i=1, total_questions do
     end
 
     -- Check if answer is correct and score accordingly
-    quiz_brain.check_answer_and_add_score(user_answered_correct)
+    quiz_brain.check_answer_and_add_score(user_answered_correct, current_question_data.correct_answer)
 end
 
 -- Display score

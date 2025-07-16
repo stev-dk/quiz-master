@@ -29,14 +29,20 @@ function quiz_brain.format_and_print_answers(correct_answer, incorrect_answers)
         print(string.format("%d.) %s", i, v))
     end
 
-    print() -- new line for estatic reasons
+    print("") -- new line for estatic reasons
     return correct_answer_index
 end
 
 function quiz_brain.get_user_answer(correct_answer)
     local current_user_answer = 0
+    local loops = 1
 
     while current_user_answer == nil or current_user_answer < 1 or current_user_answer > 4 do
+        if (loops > 3) then
+            print("The quiz only accepts numbers 1-4, not characters or words.")
+            print("Type exit to exit the quiz.")
+        end
+
         io.write("Answer (1, 2, 3 or 4): ")
         current_user_answer = io.read()
 
@@ -46,18 +52,20 @@ function quiz_brain.get_user_answer(correct_answer)
         end
 
         current_user_answer = tonumber(current_user_answer)
+        loops = loops + 1
     end
 
     print("") -- new line for estatic reasons
     return current_user_answer == correct_answer
 end
 
-function quiz_brain.check_answer_and_add_score(answer)
-    if answer then
+function quiz_brain.check_answer_and_add_score(user_answer, correct_answer)
+    if user_answer then
         score = score + 1
         io.write("Correct! ")
     else
-        io.write("Incorrect! ")
+        print("Incorrect! The correct answer is: "..correct_answer)
+        -- Add logic to show correct answer
     end
 
     print(string.format("Your score is now %d\n", score))

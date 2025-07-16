@@ -1,13 +1,20 @@
 Just a small capstone project in Lua
 
 TODO
-- Reintroduce the quiz evaluation
-- Escaping HTML chars in opentdb or other formatting
+- Reintroduce the quiz evaluation from initial project
+- Escaping HTML chars in opentdb JSON data
     - https://github.com/TiagoDanin/htmlEntities-for-lua
-- Introduce a counter, that tracks the number of invalid
-    answers. If it exceeds 3, tell the user to type exit
-    to to exit the quiz. Breaking the loop
-- If a user answers incorrect, give correct answer
+- Add support for choosing difficulty
+- Add support for choosing category
+- Add support for reading the raw JSON data
+    making the converter obsolete
+
+version 0.2.3
+- Now shows the user the correct answer, if a user guessed wrong
+- After three invalid inputs, words, characters or
+    lower than 1 or higher than 4, the game gives info to the user
+    to type exit to stop the quiz. Also tells the user what input
+    is valid
 
 version 0.2.2
 - Reformatted some code, to make the program able to read
