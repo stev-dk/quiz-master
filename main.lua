@@ -1,10 +1,10 @@
-local quiz_brain = require "quiz-brain"
+local quiz_brain = require("quiz-brain")
 
 local total_questions = 10
 
 -- NOT IMPLEMENTED YET!!
 local difficulty = "easy"
-local catagory = "general"
+local category = "general"
 -- NOT IMPLEMENTED YET!!
 
 -- Quiz Intro
@@ -17,7 +17,7 @@ for i=1, total_questions do
     local current_question_data = quiz_brain.get_random_question()
 
     -- Present question to user
-    print(current_question_data.question)
+    quiz_brain.format_and_print_question(current_question_data.question)
 
     -- Present answers to user
     local current_correct_answer = quiz_brain.format_and_print_answers(
@@ -34,4 +34,4 @@ for i=1, total_questions do
 end
 
 -- Display score
-print(string.format("You finished the quiz! You got a score of %d out %d possible.", quiz_brain.get_score(), total_questions))
+quiz_brain.evaluate_quiz(total_questions)
