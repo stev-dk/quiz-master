@@ -1,8 +1,14 @@
 Just a small capstone project in Lua
 
 TODO
-- Uniform naming
 - Reintroduce the quiz evaluation
+- Escaping HTML chars in opentdb or other formatting
+- Introduce a counter, that tracks the number of invalid
+    answers. If it exceeds 3, tell the user to type exit
+    to to exit the quiz. Breaking the loop
+
+version 0.2.1
+- Uniformed naming to use snake case
 
 version 0.2
 - Updated quiz to sudo take JSON files from opentdb

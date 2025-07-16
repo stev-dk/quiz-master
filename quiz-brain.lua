@@ -7,46 +7,47 @@ local quiz_brain = {}
 
 local score = 0
 
-function quiz_brain.getRandomQuestion()
+function quiz_brain.get_random_question()
     local total_questions = #quiz_data
-
-    random_index = math.random(1, total_questions)
+    local random_index = math.random(1, total_questions)
 
     return quiz_data[random_index], random_index
 end
 
-function quiz_brain.formatAndPrintAnswers(correct_answer, incorrect_answers)
+function quiz_brain.format_and_print_answers(correct_answer, incorrect_answers)
     local answer_array = {}
     table.insert(answer_array, correct_answer)
     for i=1, 3 do table.insert(answer_array, incorrect_answers[i]) end
 
     -- Swap correct answer to random table position
-    correctAnswerIndex = math.random(1,4)
-    answer_array[1], answer_array[correctAnswerIndex] = answer_array[correctAnswerIndex], answer_array[1]
+    local correct_answer_index = math.random(1,4)
+    answer_array[1], answer_array[correct_answer_index] = answer_array[correct_answer_index], answer_array[1]
 
     for i,v in ipairs(answer_array) do
         print(string.format("%d.) %s", i, v))
     end
 
     print() -- new line for estatic reasons
-    return correctAnswerIndex
+    return correct_answer_index
 end
 
-function quiz_brain.getUserAnswer(correctAnswer)
-    local currentUserAnswer = 0
+function quiz_brain.get_user_answer(correct_answer)
+    local current_user_answer = 0
 
-    while currentUserAnswer == nil or currentUserAnswer < 1 or currentUserAnswer > 4 do
+    while current_user_answer == nil or current_user_answer < 1 or current_user_answer > 4 do
         io.write("Answer (1, 2, 3 or 4): ")
-        currentUserAnswer = io.read()
-        if currentUserAnswer:lower() == "exit" then
+        current_user_answer = io.read()
+
+        if current_user_answer:lower() == "exit" then
             print("Thanks for playing.")
             return "exit"
         end
-        currentUserAnswer = tonumber(currentUserAnswer)
+
+        current_user_answer = tonumber(current_user_answer)
     end
 
     print("") -- new line for estatic reasons
-    return currentUserAnswer == correctAnswer
+    return current_user_answer == correct_answer
 end
 
 function quiz_brain.check_answer_and_add_score(answer)
@@ -60,8 +61,8 @@ function quiz_brain.check_answer_and_add_score(answer)
     print(string.format("Your score is now %d\n", score))
 end
 
-function quiz_brain.removeQuestion(questionIndex)
-    table.remove(quiz_data, questionIndex)
+function quiz_brain.remove_question(question_index)
+    table.remove(quiz_data, question_index)
 end
 
 function quiz_brain.get_score()

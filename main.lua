@@ -3,32 +3,33 @@ local quiz_brain = require "quiz-brain"
 local total_questions = 10
 
 -- Quiz Intro
-print("Welcome to quizmaster 3000\n")
-print("Type exit at anytime, to stop the quiz.")
+print("Welcome to quizmaster 3000")
+print("Type exit at anytime, to stop the quiz.\n")
 
 -- Loop 10 times
 for i=1, total_questions do
     -- Grab random question from quiz
-    local currentQuestionData, currentQuestionIndex = quiz_brain.getRandomQuestion()
+    local current_question_data, current_question_index = quiz_brain.get_random_question()
 
     -- Present question to user
-    print(currentQuestionData.question)
+    print(current_question_data.question)
 
     -- Present answers to user
-    local currentCorrectAnswer = quiz_brain.formatAndPrintAnswers(currentQuestionData.correct_answer, currentQuestionData.incorrect_answers)
+    local current_correct_answer = quiz_brain.format_and_print_answers(
+        current_question_data.correct_answer, current_question_data.incorrect_answers)
 
     -- Promt user for answer
-    local userAnsweredCorrect = quiz_brain.getUserAnswer(currentCorrectAnswer)
-    if userAnsweredCorrect == "exit" then
+    local user_answered_correct = quiz_brain.get_user_answer(current_correct_answer)
+    if user_answered_correct == "exit" then
         break
     end
 
     -- Check if answer is correct
     -- Keep score
-    quiz_brain.check_answer_and_add_score(userAnsweredCorrect)
+    quiz_brain.check_answer_and_add_score(user_answered_correct)
 
     -- Delete grabbed question from this session
-    quiz_brain.removeQuestion(currentQuestionIndex)
+    quiz_brain.remove_question(current_question_index)
 end
 
 -- Display score
