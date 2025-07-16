@@ -2,6 +2,11 @@ local quiz_brain = require "quiz-brain"
 
 local total_questions = 10
 
+-- NOT IMPLEMENTED YET!!
+local difficulty = "easy"
+local catagory = "general"
+-- NOT IMPLEMENTED YET!!
+
 -- Quiz Intro
 print("Welcome to quizmaster 3000")
 print("Type exit at anytime, to stop the quiz.\n")
@@ -24,12 +29,8 @@ for i=1, total_questions do
         break
     end
 
-    -- Check if answer is correct
-    -- Keep score
+    -- Check if answer is correct and score accordingly
     quiz_brain.check_answer_and_add_score(user_answered_correct)
-
-    -- Delete grabbed question from this session
-    quiz_brain.remove_question(current_question_index)
 end
 
 -- Display score

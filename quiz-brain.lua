@@ -8,10 +8,12 @@ local quiz_brain = {}
 local score = 0
 
 function quiz_brain.get_random_question()
-    local total_questions = #quiz_data
+    local total_questions = #quiz_data["results"]
     local random_index = math.random(1, total_questions)
+    local random_question_data = quiz_data["results"][random_index]
+    table.remove(quiz_data["results"], random_index)
 
-    return quiz_data[random_index], random_index
+    return random_question_data
 end
 
 function quiz_brain.format_and_print_answers(correct_answer, incorrect_answers)
@@ -59,10 +61,6 @@ function quiz_brain.check_answer_and_add_score(answer)
     end
 
     print(string.format("Your score is now %d\n", score))
-end
-
-function quiz_brain.remove_question(question_index)
-    table.remove(quiz_data, question_index)
 end
 
 function quiz_brain.get_score()

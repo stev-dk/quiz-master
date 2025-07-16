@@ -3,9 +3,17 @@ Just a small capstone project in Lua
 TODO
 - Reintroduce the quiz evaluation
 - Escaping HTML chars in opentdb or other formatting
+    - https://github.com/TiagoDanin/htmlEntities-for-lua
 - Introduce a counter, that tracks the number of invalid
     answers. If it exceeds 3, tell the user to type exit
     to to exit the quiz. Breaking the loop
+- If a user answers incorrect, give correct answer
+
+version 0.2.2
+- Reformatted some code, to make the program able to read
+    data directly from the converter.
+- Slightly reformatted some code to save space, and
+    enhance readability
 
 version 0.2.1
 - Uniformed naming to use snake case
