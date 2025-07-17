@@ -1,4 +1,5 @@
-math.randomseed(os.time())
+local seed = os.time()
+math.randomseed(seed)
 math.random(); math.random(); math.random();
 
 local quiz_data = require("quiz-data")
@@ -8,6 +9,11 @@ local quiz_brain = {}
 
 local score = 0
 local invalid_input_before_warning = 3
+
+function quiz_brain.set_seed(seed)
+    math.randomseed(seed)
+    print(string.format("Starting quiz using seed: %d", seed))
+end
 
 function quiz_brain.get_random_question()
     local total_questions = #quiz_data["results"]
@@ -92,6 +98,10 @@ function quiz_brain.evaluate_quiz(number_of_questions)
     else
         print("Perhaps this quiz wasn't meant for you.")
     end
+end
+
+function quiz_brain.get_seed()
+    return seed
 end
 
 return quiz_brain

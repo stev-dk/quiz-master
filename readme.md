@@ -1,15 +1,15 @@
-Just a small capstone project in Lua
+Just a small capstone project in Lua. This project is done
+for now. Maybe i will revisit it later, when i have more
+knowledge, but for now its done.
 
 FUTURE PLANS
 - Add support for reading the raw JSON data
     making the converter obsolete
 - Adding GUI
-- Adding a SEED, for consistent quiz, to quiz against friends
-    or enemies...
 
-TODO, near future plans
-- Add support for choosing difficulty
-- Add support for choosing category
+Version 0.3.5
+- Added a temporary version of seeding
+- Added 50 Computer-Science questions of varying diffuculty
 
 Version 0.3
 - Decode HTML entities in quiz data from opentdb
